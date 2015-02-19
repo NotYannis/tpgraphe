@@ -26,5 +26,17 @@ DURAND 120
   BEAUJOLAIS     prixmultiples 70 ;
  
 MARCEL 100
-	BOURGOGNE    cheztareum 90 ;
+	BOURGOGNE    cheztareum 90;
+	
+DURAND 120
+
+  BEAUJOLAIS     prixmultiples 70 ;
+  
+MARCEL 200
+	BOURGOGNE    cheztareum 90,
+	BEAUJOLAIS   cheztonreup 110;
+
+DURAND 120
+
+  BEAUJOLAIS     prixmultiples 70 ;
 /

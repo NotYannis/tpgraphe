@@ -1,7 +1,7 @@
 public class Actvin {
 	public static int  capacite, typeVin, nbChauf, vALivre,vLivre, chauffeurDuMois,nom, bj, bg, ordin, i,indiChauf;
 	public static SmallSet mags;
-	public static  boolean present;
+	public static boolean present = false;
 
     private static class Chauffeur {
 	public int numchauf, bj, bg, ordin ; 
@@ -62,12 +62,12 @@ public class Actvin {
     
 	switch (numact) {
 	case -1  : break ;
-	case  0  :  nbChauf=0; mags = new SmallSet(); indiChauf=0;
+	case  0  :  nbChauf=0; mags = new SmallSet(); indiChauf = 0;
 	           break ;
 	case 1 :
-			bj = 0; bg = 0; ordin = 0; typeVin = -1; capacite = 100; i=0;
+			bj = 0; bg = 0; ordin = 0; typeVin = -1; capacite = 100; i=0; present = false;
 			nom = Lexvin.numId;
-			while(i < nbChauf - 1 && !present){
+			while(i < nbChauf && !present){
 				if(tabchauf[i].numchauf == nom ){
 					present = true;
 				}
@@ -76,7 +76,7 @@ public class Actvin {
 				}
 			}
 			if(present){indiChauf=i;}
-			else if(nbChauf == MAXCHAUF){
+			else if(nbChauf >= MAXCHAUF){
 				erreur(FATALE, "Trop de chauffeurs");
 			}
 		break;
@@ -84,19 +84,22 @@ public class Actvin {
 			if(capacite > 200 || capacite < 100){
 				capacite = 100;
 			}
-			
 		break;
 		
 	case 3 : typeVin = Lexvin.numId; 
 		break;
 		
-	case 4 :mags.add(Lexvin.numId); 
+	case 4 : mags.add(Lexvin.numId);
 		break;
 		
 	case 5 : vALivre = Lexvin.valNb;
 
-			 if(vALivre == 0){erreur(NONFATALE, "La quantite à livrer est nulle");}
-			 else if(vALivre + vLivre > capacite) erreur(NONFATALE, "La capacite du camion a ete depassee " + vALivre + " " + vLivre + " " + capacite );
+			 if(vALivre == 0){
+				 erreur(NONFATALE, "La quantite à livrer est nulle");
+			}
+			 else if(vALivre + vLivre > capacite){
+				 erreur(NONFATALE, "La capacite du camion a ete depassee. A livrer :" + vALivre + ", Quantité restante : " + vLivre + ", Capacité : " + capacite );
+			 }
 			 else{
 				 	switch(typeVin){
 					 	case 0 : bj += vALivre;
@@ -109,7 +112,7 @@ public class Actvin {
 				 	vLivre += vALivre;
 			 }
 		break;
-	case 6 :vLivre = 0; vALivre=0; typeVin=-1;
+	case 6 :	vLivre = 0; vALivre=0; typeVin=-1;
 		break;
 	
 	case 7 :
