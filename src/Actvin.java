@@ -126,11 +126,12 @@ public class Actvin {
 				nbChauf++;
 				tabchauf[nbChauf-1]= new Chauffeur(nom, bj, bg, ordin, mags);
 			}
+			System.out.println(chaineCadrageGauche("CHAUFFEURS") + chaineCadrageGauche("  BJ") + chaineCadrageGauche("  BG") + chaineCadrageGauche("  ORD") + chaineCadrageGauche("  NBMAG"));
 			for(i = 0; i < nbChauf; i++){
-				System.out.println(Lexvin.repId(tabchauf[i].numchauf) + "  " + tabchauf[i].bj + " " + tabchauf[i].bg + " " + tabchauf[i].ordin + " " + 
-									tabchauf[i].magdif.size());
+				System.out.println(chaineCadrageGauche(Lexvin.repId(tabchauf[i].numchauf)) + chaineCadrageGauche("  " + tabchauf[i].bj) + chaineCadrageGauche(" "+ tabchauf[i].bg)
+														+ chaineCadrageGauche(" " + tabchauf[i].ordin) + chaineCadrageGauche(" " + tabchauf[i].magdif.size()));
 			}
-			System.out.println("-------------------------------------------------------");
+			System.out.println("-------------------------------------------------------------------------");
 			mags = new SmallSet();
 			vLivre = 0; vALivre=0;
 			
